@@ -94,8 +94,19 @@
             }
         }
 
+        .message {
+            opacity: 0;
+            transition: 1s 4s opacity ease-in-out;
+        }
+
+        .message.open {
+            opacity: 1;
+        }
+
         .card-wrap {
             transform: translateX(calc(-18vw));
+            position: absolute;
+            top: 0;
         }
 
         @media (min-width: 850px) {
@@ -105,7 +116,7 @@
         }
 
         .card-wrap.open {
-            animation: scaleUpOut 7s ease-in-out forwards;
+            animation: scaleUpOut 5s ease-in-out forwards;
         }
 
         .card {
@@ -169,6 +180,15 @@
             transform: translateX(calc(50vw * (2 / 3)));
             z-index: -1;
             background: linear-gradient(90deg, rgba(240,239,239,1) 0%, rgba(255,255,255,1) 100%);
+            font-size: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inside p {
+            margin: 0;
         }
 
         @media (min-width: 850px) {
@@ -1025,10 +1045,42 @@
                 radial-gradient(#FFD300 20%, transparent 20%);
         }
 
+        p.middle {
+            display: flex;
+            align-items: center;
+        }
+
+        .button {
+            border: 1px solid #0076d1;
+            padding: 5px 10px;
+            border-radius: 0.5em;
+        }
+
+        a:hover,
+        a:focus,
+        a:active {
+            background: #0076d1;
+            color: white;
+            text-decoration: none;
+        }
+
+        img.circle {
+            border-radius: 100em;
+        }
+
     </style>
   </head>
   <body>
-    <div class="card-wrap">
+    <div class="message card-opener">
+        <h1>Dear William,</h1>
+        <p>Happy Birthday 🎂!</p>
+        <p>Have an excellent day!</p>
+        <p>I hear you're getting into the drums 🥁, I've compiled a list of some excellent drumming as inspiration!</p>
+        <p class="middle">Andrew&nbsp;<img class="circle" height="25px" src="https://secure.gravatar.com/avatar/4e40467570b0bd1bd73408b343549f04?size=35" /></p>
+        <a class="button" href="/drums.html">Show me the drums!</a>
+        <p>(PS: If you found last year's site useful, you can still get to it: <a href="/2019">2019</a>)</p>
+    </div>
+    <div id="cardToggle" class="card-wrap card-opener">
         <div class="card">
             <div class="flip-wrap">
                 <div class="front">
@@ -1149,10 +1201,20 @@
 
 
                 </div>
-                <div class="back"><p>Back</p></div>
+                <div class="back"></div>
             </div>
-            <div class="inside"><p>Inside</p></div>
+            <div class="inside"><p>Happy Birthday!</p></div>
         </div>
     </div>
+    <script type="text/javascript">
+        const toggle = document.getElementById('cardToggle');
+        toggle.addEventListener('click', () => {
+            const openers = document.querySelectorAll('.card-opener');
+            for (let i = 0; i < openers.length; i++) {
+                openers[i].classList.add('open');
+            }
+            setTimeout(() => toggle.parentNode.removeChild(toggle), 6000);
+        });
+    </script>
   </body>
 </html>
