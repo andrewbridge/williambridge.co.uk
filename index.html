@@ -40,21 +40,100 @@
             box-sizing: border-box;
         }
 
+        @-webkit-keyframes scaleUpOut {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(10);
+                transform: scale(10);
+            }
+        }
+
+        @-ms-keyframes scaleUpOut {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(10);
+                transform: scale(10);
+            }
+        }
+
+        @keyframes scaleUpOut {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(10);
+                transform: scale(10);
+            }
+        }
+
+        .card-wrap {
+            transform: translateX(calc(-18vw));
+        }
+
+        @media (min-width: 850px) {
+            .card-wrap {
+                transform: translateX(calc(-9vw));
+            }
+        }
+
+        .card-wrap.open {
+            animation: scaleUpOut 7s ease-in-out forwards;
+        }
+
         .card {
-            font-size: 100px;
+            font-size: 20vw;
         }
 
         .card {
             perspective: 1000px;
         }
 
-        .card:hover .flip-wrap {
+        .card-wrap.open .card .flip-wrap {
             transform: rotateY(-170deg) translateX(0px);
         }
 
         .card, .front, .back, .inside {
-            width: 320px;
-            height: 480px;
+            width: calc(100vw * (2 / 3));
+            height: 100vw;
+        }
+
+        @media (min-width: 850px) {
+            .card {
+                font-size: 10vw;
+            }
+
+            .card, .front, .back, .inside {
+                width: calc(50vw * (2 / 3));
+                height: 50vw;
+            }
         }
 
         .flip-wrap {
@@ -74,7 +153,7 @@
 
         .front {
             z-index: 2;
-            transform: rotateY(0deg) translateX(160px);
+            transform: rotateY(0deg) translateX(calc(50vw * (2 / 3)));
             background: rgb(125, 207, 226);
             font-family: 'Fredericka the Great', cursive;
             text-align: center;
@@ -82,14 +161,28 @@
         }
 
         .back {
-            transform: rotateY(-170deg) translateX(-160px);
+            transform: rotateY(-170deg) translateX(calc(-50vw * (2 / 3)));
             background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(240,239,239,1) 100%);
         }
 
         .inside {
-            transform: translateX(160px);
+            transform: translateX(calc(50vw * (2 / 3)));
             z-index: -1;
             background: linear-gradient(90deg, rgba(240,239,239,1) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        @media (min-width: 850px) {
+            .front {
+                transform: rotateY(0deg) translateX(calc(25vw * (2 / 3)));
+            }
+
+            .back {
+                transform: rotateY(-170deg) translateX(calc(-25vw * (2 / 3)));
+            }
+
+            .inside {
+                transform: translateX(calc(25vw * (2 / 3)));
+            }
         }
 
         .happy-birthday, .william {
@@ -106,11 +199,17 @@
         }
 
         .william {
-            top: 30px;
+            top: 6vw;
             font-size: 75%;
             width: 100%;
             z-index: 1;
             text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.18);
+        }
+
+        @media (min-width: 850px) {
+            .william {
+                top: 3vw;
+            }
         }
 
         @-webkit-keyframes easeOutBounce {
@@ -275,7 +374,7 @@
 
         }
 
-        @-webkit-keyframes fadeSlideIn {
+        @-webkit-keyframes fadeSlideDown {
             0% {
                 opacity: 0;
                 -webkit-transform: translateY(-100%);
@@ -289,7 +388,7 @@
             }
         }
 
-        @-ms-keyframes fadeSlideIn {
+        @-ms-keyframes fadeSlideDown {
             0% {
                 opacity: 0;
                 -webkit-transform: translateY(-100%);
@@ -317,6 +416,34 @@
             }
         }
 
+        @-webkit-keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-ms-keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
         @keyframes fadeSlideUp {
             0% {
                 opacity: 0;
@@ -331,31 +458,53 @@
             }
         }
 
-        @keyframes slideDown {
+        @-webkit-keyframes slideDown {
             0% {
-                transform: translateY(-200%);
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
             }
 
             100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-ms-keyframes slideDown {
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @keyframes slideDown {
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
                 transform: translateY(0%);
             }
         }
 
         .happy-birthday {
-            -webkit-animation: fadeSlideDown 1s 9s ease-in-out forwards;
-            -ms-animation: fadeSlideDown 1s 9s ease-in-out forwards;
-            animation: fadeSlideDown 1s 9s ease-in-out forwards;
-            -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+            -webkit-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            -ms-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            animation: fadeSlideDown 1s 6s ease-in-out forwards;
             opacity: 0;
         }
 
         .william {
-            -webkit-animation: fadeSlideDown 1s 9s ease-in-out forwards;
-            -ms-animation: fadeSlideDown 1s 9s ease-in-out forwards;
-            animation: fadeSlideDown 1s 9s ease-in-out forwards;
-            -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+            -webkit-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            -ms-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            animation: fadeSlideDown 1s 6s ease-in-out forwards;
             opacity: 0;
         }
 
@@ -363,57 +512,102 @@
             font-family: 'Frijole', cursive;
             position: absolute;
             font-size: 222%;
-            top: 67px;
-            -webkit-animation: easeOutBounce 2s 10s ease-in-out forwards;
-            -ms-animation: easeOutBounce 2s 10s ease-in-out forwards;
-            animation: easeOutBounce 2s 10s ease-in-out forwards;
-            -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+            top: 20vw;
+            -webkit-animation: easeOutBounce 2s 7s ease-in-out forwards;
+            -ms-animation: easeOutBounce 2s 7s ease-in-out forwards;
+            animation: easeOutBounce 2s 7s ease-in-out forwards;
             color: lightcoral;
         }
 
         .one {
-            left: 32px;
+            left: 6vw;
         }
 
         .three {
-            right: 32px;
-            animation-delay: 10.75s;
+            right: 6vw;
+            animation-delay: 7.75s;
+        }
+
+        .happy-birthday, .william, .one, .three {
+            -webkit-transform: translateY(-100vw);
+            transform: translateY(-100vw);
+        }
+
+        @media (min-width: 850px) {
+            .happy-birthday, .william, .one, .three {
+                -webkit-transform: translateY(-50vw);
+                transform: translateY(-50vw);
+            }
+
+            .one, .three {
+                top: 10vw;
+            }
+
+            .one {
+                left: 3vw;
+            }
+
+            .three {
+                right: 3vw;
+            }
         }
 
         .table {
-            width: 320px;
-            height: 140px;
+            width: calc(100vw * (2 / 3));
+            height: calc(100vw * .3);
             border-radius: 50%;
             border: 3px solid #77582a;
             background: #a07637;
             position: absolute;
-            bottom: -45px;
-            -webkit-animation: fadeSlideUp 1s 8s ease-in-out forwards;
-            -ms-animation: fadeSlideUp 1s 8s ease-in-out forwards;
-            animation: fadeSlideUp 1s 8s ease-in-out forwards;
-            -webkit-transform: translateY(500px);
-            transform: translateY(500px);
+            bottom: -3.5vw;
+            -webkit-animation: fadeSlideUp 1s 5s ease-in-out forwards;
+            -ms-animation: fadeSlideUp 1s 5s ease-in-out forwards;
+            animation: fadeSlideUp 1s 5s ease-in-out forwards;
+            -webkit-transform: translateY(100vw);
+            transform: translateY(100vw);
             opacity: 0;
+        }
+
+        @media (min-width: 850px) {
+            .table {
+                width: calc(50vw * (2 / 3));
+                height: calc(50vw * .3);
+                -webkit-transform: translateY(50vw);
+                transform: translateY(50vw);
+            }
         }
 
         .table img {
             position: absolute;
-            bottom: 32px;
+            bottom: 3vw;
             left: calc(50% - 30%);
             width: 60%;
-            -webkit-animation: slideDown 1s 9s cubic-bezier(1, -0.07, 0, 1.46) forwards;
-            -ms-animation: slideDown 1s 9s cubic-bezier(1, -0.07, 0, 1.46) forwards;
-            animation: slideDown 1s 9s cubic-bezier(1, -0.07, 0, 1.46) forwards;
-            -webkit-transform: translateY(-1000px);
-            transform: translateY(-1000px);
+            -webkit-animation: slideDown 1s 6s cubic-bezier(1, -0.07, 0, 1.46) forwards;
+            -ms-animation: slideDown 1s 6s cubic-bezier(1, -0.07, 0, 1.46) forwards;
+            animation: slideDown 1s 6s cubic-bezier(1, -0.07, 0, 1.46) forwards;
+            -webkit-transform: translateY(-200vw);
+            transform: translateY(-200vw);
+        }
+
+        @media (min-width: 850px) {
+            .table img {
+                -webkit-transform: translateY(-100vw);
+                transform: translateY(-100vw);
+            }
         }
 
         .balloon {
-            width: 50px;
-            height: 100px;
+            width: 16vw;
+            height: 32vw;
             /*   border: 1px solid black; */
             display: inline-block;
+        }
+
+        @media (min-width: 850px) {
+            .balloon {
+                width: 8vw;
+                height: 16vw;
+            }
         }
 
         .balloon .head {
@@ -440,14 +634,31 @@
             /*   border-radius: 3em; */
             /*   width: 3px; */
             margin: 0 auto;
-            transform: rotate(90deg) translateY(5px);
+            transform: rotate(90deg) translateY(.2vw);
             border:solid 5px #000;
             border-color:#000 transparent transparent transparent;
-            border-radius: 50%/16.6px 16.6px 0 0;
+            border-radius: 50%/4vw 4vw 0 0;
+        }
+
+        @media (min-width: 850px) {
+            .balloon .tail {
+                border-radius: 50%/1vw 1vw 0 0;
+            }
         }
 
         .balloon .tail + .tail {
-            transform: rotate(-90deg) translate(-7px, 5px);
+            transform: rotate(-90deg) translate(-2.8vw, 3.7vw);
+        }
+
+        @media (min-width: 850px) {
+            .balloon .tail + .tail {
+                transform: rotate(-90deg) translate(-2.8vw, 2.2vw);
+            }
+        }
+        @media (min-width: 1180px) {
+            .balloon .tail + .tail {
+                transform: rotate(-90deg) translate(-2.8vw, 2.4vw);
+            }
         }
 
         /* .wrap:first-child .tail {
@@ -457,28 +668,491 @@
         .wrap:first-child .tail + .tail {
         transform: rotate(90deg) translate(25px, 20px);
         } */
+
+        @keyframes floatUpRow1 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUpRow2 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(9.6vw);
+            }
+        }
+
+        @keyframes floatUpRow3 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(19.2vw);
+            }
+        }
+
+        @keyframes floatUpRow4 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(28.9vw);
+            }
+        }
+
+        @keyframes floatUpRow5 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(38.4vw);
+            }
+        }
+
+        @keyframes floatUpRow6 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(48vw);
+            }
+        }
+
+        @keyframes floatUpRow7 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(57.6vw);
+            }
+        }
+
+        @keyframes floatUpRow8 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(67.2vw);
+            }
+        }
+
+        @keyframes floatOut {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-200vw);
+            }
+        }
+
+        @media (min-width: 850px) {
+            @keyframes floatUpRow1 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes floatUpRow2 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(9.6vw);
+                }
+            }
+
+            @keyframes floatUpRow3 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(19.2vw);
+                }
+            }
+
+            @keyframes floatUpRow4 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(28.9vw);
+                }
+            }
+
+            @keyframes floatUpRow5 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(38.4vw);
+                }
+            }
+
+            @keyframes floatUpRow6 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(48vw);
+                }
+            }
+
+            @keyframes floatUpRow7 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(57.6vw);
+                }
+            }
+
+            @keyframes floatUpRow8 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(67.2vw);
+                }
+            }
+
+            @keyframes floatOut {
+                0% {
+                    transform: translateY(0);
+                }
+
+                100% {
+                    transform: translateY(-100vw);
+                }
+            }
+        }
+
+        .balloons {
+            position: relative;
+            height: 100vw;
+            margin-left: -8vw;
+            z-index: 3;
+            animation: floatOut 5s 3s ease-in-out forwards;
+        }
+
+        @media (min-width: 850px) {
+            .balloons {
+                height: 50vw;
+                margin-left: -3vw;
+            }
+        }
+
+        .balloons .balloon {
+            position: absolute;
+            transition: 6s transform ease-in-out;
+            left: 0;
+            animation: floatUpRow1 6s ease-in-out forwards;
+        }
+
+        .balloons .balloon:nth-child(15) ~ .balloon {
+            animation-name: floatUpRow2;
+        }
+
+        .balloons .balloon:nth-child(30) ~ .balloon {
+            animation-name: floatUpRow3;
+        }
+
+        .balloons .balloon:nth-child(45) ~ .balloon {
+            animation-name: floatUpRow4;
+        }
+
+        .balloons .balloon:nth-child(60) ~ .balloon {
+            animation-name: floatUpRow5;
+        }
+
+        .balloons .balloon:nth-child(75) ~ .balloon {
+            animation-name: floatUpRow6;
+        }
+
+        .balloons .balloon:nth-child(90) ~ .balloon {
+            animation-name: floatUpRow7;
+        }
+
+        .balloons .balloon:nth-child(105) ~ .balloon {
+            animation-name: floatUpRow8;
+        }
+
+        .balloons .balloon:nth-child(15n + 2) {
+            left: 9%;
+            top: 5%;
+            z-index: 2;
+        }
+
+        .balloons .balloon:nth-child(15n + 3) {
+            left: 14%;
+            z-index: 1;
+        }
+
+        .balloons .balloon:nth-child(15n + 4) {
+            left: 20%;
+            top: 6%;
+            z-index: 1;
+        }
+
+        .balloons .balloon:nth-child(15n + 5) {
+            left: 24%;
+            top: 1%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 6) {
+            left: 31%;
+            top: 4%;
+            z-index: 2;
+        }
+
+        .balloons .balloon:nth-child(15n + 7) {
+            left: 36%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 8) {
+            left: 41%;
+            top: 5%;
+        }
+
+        .balloons .balloon:nth-child(15n + 9) {
+            left: 49%;
+            top: -1%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 10) {
+            left: 53%;
+            top: 6%;
+        }
+
+        .balloons .balloon:nth-child(15n + 11) {
+            left: 59%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .balloons .balloon:nth-child(15n + 12) {
+            left: 63%;
+            top: 4%;
+            z-index: 1;
+        }
+
+        .balloons .balloon:nth-child(15n + 13) {
+            left: 71%;
+            top: 1%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 14) {
+            left: 75%;
+            top: 5%;
+            z-index: 2;
+        }
+
+        .balloons .balloon:nth-child(15n + 15) {
+            left: 84%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(2n) {
+            animation-duration: 5.5s;
+        }
+
+        .balloons .balloon:nth-child(2n) .head {
+            background-image: radial-gradient(#212121 20%, transparent 20%),
+                radial-gradient(#fafafa 20%, transparent 20%);
+            background-position: 0 0, 4vw 4vw;
+            background-size: 8vw 8vw;
+        }
+
+        @media (min-width: 850px) {
+            .balloons .balloon:nth-child(2n) .head {
+                background-position: 0 0, 2vw 2vw;
+                background-size: 4vw 4vw;
+            }
+        }
+
+        @media (max-width: 849px) {
+            .balloons .balloon:nth-child(3n + 1) {
+                display: none;
+            }
+        }
+
+        .balloons .balloon:nth-child(4n) {
+            animation-duration: 4s;
+        }
+
+        .balloons .balloon:nth-child(6n) .head {
+            background-color: lightgreen;
+        }
+
+        .balloons .balloon:nth-child(5n) .head {
+            background-color: #e53935;
+        }
+
+        .balloons .balloon:nth-child(7n) {
+            animation-duration: 7.5s;
+        }
+
+        .balloons .balloon:nth-child(8n) .head {
+            background-image: radial-gradient(#645394 20%, transparent 20%),
+                radial-gradient(#FFD300 20%, transparent 20%);
+        }
+
     </style>
   </head>
   <body>
-    <div class="card">
-        <div class="flip-wrap">
-            <div class="front">
-                <span class="happy-birthday">Happy Birthday</span>
-                <span class="william">William</span>
-                <span class="one">1</span>
-                <span class="three">3</span>
-                <div class="table">
-                    <img src="assets/images/birthday-cake.png" />
+    <div class="card-wrap">
+        <div class="card">
+            <div class="flip-wrap">
+                <div class="front">
+                    <span class="happy-birthday">Happy Birthday</span>
+                    <span class="william">William</span>
+                    <span class="one">1</span>
+                    <span class="three">3</span>
+                    <div class="table">
+                        <img src="assets/images/birthday-cake.png" />
+                    </div>
+                    <div class="balloons">
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                    </div>
+
+
                 </div>
-                <div class="balloon">
-                    <div class="head"></div>
-                    <div class="tail"></div>
-                    <div class="tail"></div>
-                </div>
+                <div class="back"><p>Back</p></div>
             </div>
-            <div class="back"><p>Back</p></div>
+            <div class="inside"><p>Inside</p></div>
         </div>
-        <div class="inside"><p>Inside</p></div>
     </div>
   </body>
 </html>
