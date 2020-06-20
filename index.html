@@ -6,8 +6,1043 @@
     <title>🎂 Happy Birthday, William Bridge</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
     <style type="text/css">
-        img.circle {
-            border-radius: 100em;
+        /* latin */
+        @font-face {
+            font-family: 'Frijole';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('./assets/webfonts/Frijole/Frijole.eot');
+            src: local('Frijole'),
+                url('./assets/webfonts/Frijole/Frijole.eot?#iefix') format('embedded-opentype'),
+                url('./assets/webfonts/Frijole/Frijole.woff2') format('woff2'),
+                url('./assets/webfonts/Frijole/Frijole.woff') format('woff'),
+                url('./assets/webfonts/Frijole/Frijole-Regular.ttf') format('truetype'),
+                url('./assets/webfonts/Frijole/Frijole.svg#Frijole') format('svg');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        @font-face {
+            font-family: 'Fredericka the Great';
+            src: url('./assets/webfonts/Fredericka_the_Great/FrederickatheGreat-Regular.eot');
+            src: local('Fredericka the Great'), local('FrederickatheGreat-Regular'),
+                url('./assets/webfonts/Fredericka_the_Great/FrederickatheGreat-Regular.eot?#iefix') format('embedded-opentype'),
+                url('./assets/webfonts/Fredericka_the_Great/FrederickatheGreat-Regular.woff2') format('woff2'),
+                url('./assets/webfonts/Fredericka_the_Great/FrederickatheGreat-Regular.woff') format('woff'),
+                url('./assets/webfonts/Fredericka_the_Great/FrederickatheGreat-Regular.ttf') format('truetype'),
+                url('./assets/webfonts/Fredericka_the_Great/FrederickatheGreat-Regular.svg#FrederickatheGreat-Regular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        @-webkit-keyframes scaleUpOut {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(10);
+                transform: scale(10);
+            }
+        }
+
+        @-ms-keyframes scaleUpOut {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(10);
+                transform: scale(10);
+            }
+        }
+
+        @keyframes scaleUpOut {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(10);
+                transform: scale(10);
+            }
+        }
+
+        .message {
+            opacity: 0;
+            transition: 1s 4s opacity ease-in-out;
+        }
+
+        .message.open {
+            opacity: 1;
+        }
+
+        .card-wrap {
+            transform: translateX(calc(-18vw));
+            position: absolute;
+            top: 0;
+        }
+
+        @media (min-width: 850px) {
+            .card-wrap {
+                transform: translateX(calc(-9vw));
+            }
+        }
+
+        .card-wrap.open {
+            animation: scaleUpOut 5s ease-in-out forwards;
+        }
+
+        .card {
+            font-size: 20vw;
+        }
+
+        .card {
+            perspective: 1000px;
+        }
+
+        .card-wrap.open .card .flip-wrap {
+            transform: rotateY(-170deg) translateX(0px);
+        }
+
+        .card, .front, .back, .inside {
+            width: calc(100vw * (2 / 3));
+            height: 100vw;
+        }
+
+        @media (min-width: 850px) {
+            .card {
+                font-size: 10vw;
+            }
+
+            .card, .front, .back, .inside {
+                width: calc(50vw * (2 / 3));
+                height: 50vw;
+            }
+        }
+
+        .flip-wrap {
+            transition: .6s transform ease-in-out;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .front, .back, .inside {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid rgba(240,239,239,1);
+        }
+
+        .front {
+            z-index: 2;
+            transform: rotateY(0deg) translateX(calc(50vw * (2 / 3)));
+            background: rgb(125, 207, 226);
+            font-family: 'Fredericka the Great', cursive;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .back {
+            transform: rotateY(-170deg) translateX(calc(-50vw * (2 / 3)));
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(240,239,239,1) 100%);
+        }
+
+        .inside {
+            transform: translateX(calc(50vw * (2 / 3)));
+            z-index: -1;
+            background: linear-gradient(90deg, rgba(240,239,239,1) 0%, rgba(255,255,255,1) 100%);
+            font-size: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inside p {
+            margin: 0;
+        }
+
+        @media (min-width: 850px) {
+            .front {
+                transform: rotateY(0deg) translateX(calc(25vw * (2 / 3)));
+            }
+
+            .back {
+                transform: rotateY(-170deg) translateX(calc(-25vw * (2 / 3)));
+            }
+
+            .inside {
+                transform: translateX(calc(25vw * (2 / 3)));
+            }
+        }
+
+        .happy-birthday, .william {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: white;
+        }
+
+        .happy-birthday {
+            font-size: 29%;
+            text-shadow: .1em .1em .1em rgba(0, 0, 0, 0.1);
+        }
+
+        .william {
+            top: 6vw;
+            font-size: 75%;
+            width: 100%;
+            z-index: 1;
+            text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.18);
+        }
+
+        @media (min-width: 850px) {
+            .william {
+                top: 3vw;
+            }
+        }
+
+        @-webkit-keyframes easeOutBounce {
+
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            4% {
+                -webkit-transform: translateY(-89.11%);
+                transform: translateY(-89.11%);
+            }
+
+            8% {
+                -webkit-transform: translateY(-56.44%);
+                transform: translateY(-56.44%);
+            }
+
+            18% {
+                -webkit-transform: translateY(-1.99%);
+                transform: translateY(-1.99%);
+            }
+
+            26% {
+                -webkit-transform: translateY(-24.98%);
+                transform: translateY(-24.98%);
+            }
+
+            46% {
+                -webkit-transform: translateY(-1.63%);
+                transform: translateY(-1.63%);
+            }
+
+            76% {
+                -webkit-transform: translateY(-0.66%);
+                transform: translateY(-0.66%);
+            }
+
+            64% {
+                -webkit-transform: translateY(-6.25%);
+                transform: translateY(-6.25%);
+            }
+
+            88% {
+                -webkit-transform: translateY(-1.54%);
+                transform: translateY(-1.54%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+
+        }
+
+        @-ms-keyframes easeOutBounce {
+
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            4% {
+                -webkit-transform: translateY(-89.11%);
+                transform: translateY(-89.11%);
+            }
+
+            8% {
+                -webkit-transform: translateY(-56.44%);
+                transform: translateY(-56.44%);
+            }
+
+            18% {
+                -webkit-transform: translateY(-1.99%);
+                transform: translateY(-1.99%);
+            }
+
+            26% {
+                -webkit-transform: translateY(-24.98%);
+                transform: translateY(-24.98%);
+            }
+
+            46% {
+                -webkit-transform: translateY(-1.63%);
+                transform: translateY(-1.63%);
+            }
+
+            76% {
+                -webkit-transform: translateY(-0.66%);
+                transform: translateY(-0.66%);
+            }
+
+            64% {
+                -webkit-transform: translateY(-6.25%);
+                transform: translateY(-6.25%);
+            }
+
+            88% {
+                -webkit-transform: translateY(-1.54%);
+                transform: translateY(-1.54%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+
+        }
+
+        @keyframes easeOutBounce {
+
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            4% {
+                -webkit-transform: translateY(-89.11%);
+                transform: translateY(-89.11%);
+            }
+
+            8% {
+                -webkit-transform: translateY(-56.44%);
+                transform: translateY(-56.44%);
+            }
+
+            18% {
+                -webkit-transform: translateY(-1.99%);
+                transform: translateY(-1.99%);
+            }
+
+            26% {
+                -webkit-transform: translateY(-24.98%);
+                transform: translateY(-24.98%);
+            }
+
+            46% {
+                -webkit-transform: translateY(-1.63%);
+                transform: translateY(-1.63%);
+            }
+
+            76% {
+                -webkit-transform: translateY(-0.66%);
+                transform: translateY(-0.66%);
+            }
+
+            64% {
+                -webkit-transform: translateY(-6.25%);
+                transform: translateY(-6.25%);
+            }
+
+            88% {
+                -webkit-transform: translateY(-1.54%);
+                transform: translateY(-1.54%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+
+        }
+
+        @-webkit-keyframes fadeSlideDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-ms-keyframes fadeSlideDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @keyframes fadeSlideDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-webkit-keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-ms-keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-webkit-keyframes slideDown {
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @-ms-keyframes slideDown {
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        @keyframes slideDown {
+            0% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            100% {
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+            }
+        }
+
+        .happy-birthday {
+            -webkit-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            -ms-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        .william {
+            -webkit-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            -ms-animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            animation: fadeSlideDown 1s 6s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        .one, .three {
+            font-family: 'Frijole', cursive;
+            position: absolute;
+            font-size: 222%;
+            top: 20vw;
+            -webkit-animation: easeOutBounce 2s 7s ease-in-out forwards;
+            -ms-animation: easeOutBounce 2s 7s ease-in-out forwards;
+            animation: easeOutBounce 2s 7s ease-in-out forwards;
+            color: lightcoral;
+        }
+
+        .one {
+            left: 6vw;
+        }
+
+        .three {
+            right: 6vw;
+            animation-delay: 7.75s;
+        }
+
+        .happy-birthday, .william, .one, .three {
+            -webkit-transform: translateY(-100vw);
+            transform: translateY(-100vw);
+        }
+
+        @media (min-width: 850px) {
+            .happy-birthday, .william, .one, .three {
+                -webkit-transform: translateY(-50vw);
+                transform: translateY(-50vw);
+            }
+
+            .one, .three {
+                top: 10vw;
+            }
+
+            .one {
+                left: 3vw;
+            }
+
+            .three {
+                right: 3vw;
+            }
+        }
+
+        .table {
+            width: calc(100vw * (2 / 3));
+            height: calc(100vw * .3);
+            border-radius: 50%;
+            border: 3px solid #77582a;
+            background: #a07637;
+            position: absolute;
+            bottom: -3.5vw;
+            -webkit-animation: fadeSlideUp 1s 5s ease-in-out forwards;
+            -ms-animation: fadeSlideUp 1s 5s ease-in-out forwards;
+            animation: fadeSlideUp 1s 5s ease-in-out forwards;
+            -webkit-transform: translateY(100vw);
+            transform: translateY(100vw);
+            opacity: 0;
+        }
+
+        @media (min-width: 850px) {
+            .table {
+                width: calc(50vw * (2 / 3));
+                height: calc(50vw * .3);
+                -webkit-transform: translateY(50vw);
+                transform: translateY(50vw);
+            }
+        }
+
+        .table img {
+            position: absolute;
+            bottom: 3vw;
+            left: calc(50% - 30%);
+            width: 60%;
+            -webkit-animation: slideDown 1s 6s cubic-bezier(1, -0.07, 0, 1.46) forwards;
+            -ms-animation: slideDown 1s 6s cubic-bezier(1, -0.07, 0, 1.46) forwards;
+            animation: slideDown 1s 6s cubic-bezier(1, -0.07, 0, 1.46) forwards;
+            -webkit-transform: translateY(-200vw);
+            transform: translateY(-200vw);
+        }
+
+        @media (min-width: 850px) {
+            .table img {
+                -webkit-transform: translateY(-100vw);
+                transform: translateY(-100vw);
+            }
+        }
+
+        .balloon {
+            width: 16vw;
+            height: 32vw;
+            /*   border: 1px solid black; */
+            display: inline-block;
+        }
+
+        @media (min-width: 850px) {
+            .balloon {
+                width: 8vw;
+                height: 16vw;
+            }
+        }
+
+        .balloon .head {
+            position: relative;
+            border: 3px solid black;
+            height: 55%;
+            border-radius: 5em;
+            background: lightblue;
+            z-index: 1;
+        }
+
+        /* .wrap:first-child .head {
+            background-image: radial-gradient(#212121 20%, transparent 20%),
+                radial-gradient(#fafafa 20%, transparent 20%);
+            background-color: #e53935;
+            background-position: 0 0, 50px 50px;
+            background-size: 100px 100px;
+        } */
+
+        .balloon .tail {
+            height: 22.5%;
+            /*   background: black; */
+            /*   border-left: 3px solid black; */
+            /*   border-radius: 3em; */
+            /*   width: 3px; */
+            margin: 0 auto;
+            transform: rotate(90deg) translateY(.2vw);
+            border:solid 5px #000;
+            border-color:#000 transparent transparent transparent;
+            border-radius: 50%/4vw 4vw 0 0;
+        }
+
+        @media (min-width: 850px) {
+            .balloon .tail {
+                border-radius: 50%/1vw 1vw 0 0;
+            }
+        }
+
+        .balloon .tail + .tail {
+            transform: rotate(-90deg) translate(-2.8vw, 3.7vw);
+        }
+
+        @media (min-width: 850px) {
+            .balloon .tail + .tail {
+                transform: rotate(-90deg) translate(-2.8vw, 2.2vw);
+            }
+        }
+        @media (min-width: 1180px) {
+            .balloon .tail + .tail {
+                transform: rotate(-90deg) translate(-2.8vw, 2.4vw);
+            }
+        }
+
+        /* .wrap:first-child .tail {
+        transform: rotate(-90deg) translateY(25px);
+        }
+
+        .wrap:first-child .tail + .tail {
+        transform: rotate(90deg) translate(25px, 20px);
+        } */
+
+        @keyframes floatUpRow1 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUpRow2 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(9.6vw);
+            }
+        }
+
+        @keyframes floatUpRow3 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(19.2vw);
+            }
+        }
+
+        @keyframes floatUpRow4 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(28.9vw);
+            }
+        }
+
+        @keyframes floatUpRow5 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(38.4vw);
+            }
+        }
+
+        @keyframes floatUpRow6 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(48vw);
+            }
+        }
+
+        @keyframes floatUpRow7 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(57.6vw);
+            }
+        }
+
+        @keyframes floatUpRow8 {
+            0% {
+                transform: translateY(100vw);
+            }
+
+            100% {
+                transform: translateY(67.2vw);
+            }
+        }
+
+        @keyframes floatOut {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-200vw);
+            }
+        }
+
+        @media (min-width: 850px) {
+            @keyframes floatUpRow1 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes floatUpRow2 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(9.6vw);
+                }
+            }
+
+            @keyframes floatUpRow3 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(19.2vw);
+                }
+            }
+
+            @keyframes floatUpRow4 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(28.9vw);
+                }
+            }
+
+            @keyframes floatUpRow5 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(38.4vw);
+                }
+            }
+
+            @keyframes floatUpRow6 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(48vw);
+                }
+            }
+
+            @keyframes floatUpRow7 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(57.6vw);
+                }
+            }
+
+            @keyframes floatUpRow8 {
+                0% {
+                    transform: translateY(50vw);
+                }
+
+                100% {
+                    transform: translateY(67.2vw);
+                }
+            }
+
+            @keyframes floatOut {
+                0% {
+                    transform: translateY(0);
+                }
+
+                100% {
+                    transform: translateY(-100vw);
+                }
+            }
+        }
+
+        .balloons {
+            position: relative;
+            height: 100vw;
+            margin-left: -8vw;
+            z-index: 3;
+            animation: floatOut 5s 3s ease-in-out forwards;
+        }
+
+        @media (min-width: 850px) {
+            .balloons {
+                height: 50vw;
+                margin-left: -3vw;
+            }
+        }
+
+        .balloons .balloon {
+            position: absolute;
+            transition: 6s transform ease-in-out;
+            left: 0;
+            animation: floatUpRow1 6s ease-in-out forwards;
+        }
+
+        .balloons .balloon:nth-child(15) ~ .balloon {
+            animation-name: floatUpRow2;
+        }
+
+        .balloons .balloon:nth-child(30) ~ .balloon {
+            animation-name: floatUpRow3;
+        }
+
+        .balloons .balloon:nth-child(45) ~ .balloon {
+            animation-name: floatUpRow4;
+        }
+
+        .balloons .balloon:nth-child(60) ~ .balloon {
+            animation-name: floatUpRow5;
+        }
+
+        .balloons .balloon:nth-child(75) ~ .balloon {
+            animation-name: floatUpRow6;
+        }
+
+        .balloons .balloon:nth-child(90) ~ .balloon {
+            animation-name: floatUpRow7;
+        }
+
+        .balloons .balloon:nth-child(105) ~ .balloon {
+            animation-name: floatUpRow8;
+        }
+
+        .balloons .balloon:nth-child(15n + 2) {
+            left: 9%;
+            top: 5%;
+            z-index: 2;
+        }
+
+        .balloons .balloon:nth-child(15n + 3) {
+            left: 14%;
+            z-index: 1;
+        }
+
+        .balloons .balloon:nth-child(15n + 4) {
+            left: 20%;
+            top: 6%;
+            z-index: 1;
+        }
+
+        .balloons .balloon:nth-child(15n + 5) {
+            left: 24%;
+            top: 1%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 6) {
+            left: 31%;
+            top: 4%;
+            z-index: 2;
+        }
+
+        .balloons .balloon:nth-child(15n + 7) {
+            left: 36%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 8) {
+            left: 41%;
+            top: 5%;
+        }
+
+        .balloons .balloon:nth-child(15n + 9) {
+            left: 49%;
+            top: -1%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 10) {
+            left: 53%;
+            top: 6%;
+        }
+
+        .balloons .balloon:nth-child(15n + 11) {
+            left: 59%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .balloons .balloon:nth-child(15n + 12) {
+            left: 63%;
+            top: 4%;
+            z-index: 1;
+        }
+
+        .balloons .balloon:nth-child(15n + 13) {
+            left: 71%;
+            top: 1%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(15n + 14) {
+            left: 75%;
+            top: 5%;
+            z-index: 2;
+        }
+
+        .balloons .balloon:nth-child(15n + 15) {
+            left: 84%;
+            z-index: 0;
+        }
+
+        .balloons .balloon:nth-child(2n) {
+            animation-duration: 5.5s;
+        }
+
+        .balloons .balloon:nth-child(2n) .head {
+            background-image: radial-gradient(#212121 20%, transparent 20%),
+                radial-gradient(#fafafa 20%, transparent 20%);
+            background-position: 0 0, 4vw 4vw;
+            background-size: 8vw 8vw;
+        }
+
+        @media (min-width: 850px) {
+            .balloons .balloon:nth-child(2n) .head {
+                background-position: 0 0, 2vw 2vw;
+                background-size: 4vw 4vw;
+            }
+        }
+
+        @media (max-width: 849px) {
+            .balloons .balloon:nth-child(3n + 1) {
+                display: none;
+            }
+        }
+
+        .balloons .balloon:nth-child(4n) {
+            animation-duration: 4s;
+        }
+
+        .balloons .balloon:nth-child(6n) .head {
+            background-color: lightgreen;
+        }
+
+        .balloons .balloon:nth-child(5n) .head {
+            background-color: #e53935;
+        }
+
+        .balloons .balloon:nth-child(7n) {
+            animation-duration: 7.5s;
+        }
+
+        .balloons .balloon:nth-child(8n) .head {
+            background-image: radial-gradient(#645394 20%, transparent 20%),
+                radial-gradient(#FFD300 20%, transparent 20%);
         }
 
         p.middle {
@@ -15,47 +1050,171 @@
             align-items: center;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: space-around;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
+        .button {
             border: 1px solid #0076d1;
             padding: 5px 10px;
             border-radius: 0.5em;
         }
 
-        nav ul li:hover,
-        nav ul li:focus,
-        nav ul li:active {
+        a:hover,
+        a:focus,
+        a:active {
             background: #0076d1;
-        }
-
-        nav ul li:hover a,
-        nav ul li a:focus,
-        nav ul li a:active {
             color: white;
             text-decoration: none;
         }
+
+        img.circle {
+            border-radius: 100em;
+        }
+
     </style>
   </head>
   <body>
-      <h1>Dear William,</h1>
-      <p>Happy Birthday 🎂! Have a brilliant day!</p>
-      <p>There's something in the post that should hopefully be fun 🎶🎮.</p>
-      <p>In the meantime, I've set this site up with some musical ideas!</p>
-      <p>Enjoy!</p>
-      <p class="middle">Andrew&nbsp;<img class="circle" height="25px" src="https://secure.gravatar.com/avatar/4e40467570b0bd1bd73408b343549f04?size=35" /></p>
-      <nav>
-          <ul>
-              <li><a href="/equipment.html">Equipment</a></li>
-              <li><a href="/music.html">Music</a></li>
-              <li><a href="/website.html">Website</a></li>
-          </ul>
-      </nav>
+    <div class="message card-opener">
+        <h1>Dear William,</h1>
+        <p>Happy Birthday 🎂!</p>
+        <p>Have an excellent day!</p>
+        <p>I hear you're getting into the drums 🥁, I've compiled a list of some excellent drumming as inspiration!</p>
+        <p class="middle">Andrew&nbsp;<img class="circle" height="25px" src="https://secure.gravatar.com/avatar/4e40467570b0bd1bd73408b343549f04?size=35" /></p>
+        <a class="button" href="/drums.html">Show me the drums!</a>
+        <p>(PS: If you found last year's site useful, you can still get to it: <a href="/2019">2019</a>)</p>
+    </div>
+    <div id="cardToggle" class="card-wrap card-opener">
+        <div class="card">
+            <div class="flip-wrap">
+                <div class="front">
+                    <span class="happy-birthday">Happy Birthday</span>
+                    <span class="william">William</span>
+                    <span class="one">1</span>
+                    <span class="three">3</span>
+                    <div class="table">
+                        <img src="assets/images/birthday-cake.png" />
+                    </div>
+                    <div class="balloons">
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                        <div class="balloon"><div class="head"></div><div class="tail"></div><div class="tail"></div></div>
+                    </div>
+
+
+                </div>
+                <div class="back"></div>
+            </div>
+            <div class="inside"><p>Happy Birthday!</p></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const toggle = document.getElementById('cardToggle');
+        toggle.addEventListener('click', () => {
+            const openers = document.querySelectorAll('.card-opener');
+            for (let i = 0; i < openers.length; i++) {
+                openers[i].classList.add('open');
+            }
+            setTimeout(() => toggle.parentNode.removeChild(toggle), 6000);
+        });
+    </script>
   </body>
 </html>
