@@ -153,6 +153,22 @@
             animation: ship-sail 40s 3.5s ease-out both;
         }
 
+        @media screen and (max-width: 768px) {
+            @keyframes ship-sail {
+                0% {
+                    left: -25vw;
+                }
+
+                100% {
+                    left: 125vw;
+                }
+            }
+
+            .ship {
+                width: 25vw;
+            }
+        }
+
         .sea {
             background: #53c3d9;
             height: 20%;
@@ -169,6 +185,13 @@
             background-repeat: repeat-x;
             background-image: url("./assets/images/waves.svg");
             animation: sea-move 5s ease-out forwards infinite;
+        }
+
+        @media screen and (max-width: 768px) {
+            .sky::after {
+                background-size: 50%;
+                height: 4vw;
+            }
         }
 
         [class^="cloud"] {
@@ -199,6 +222,21 @@
             animation: fade-left 2s 0.5s ease-out both;
         }
 
+        @media screen and (max-width: 768px) {
+            [class^="cloud"] {
+                width: 50vw;
+            }
+
+            .cloud-2 {
+                top: 30vh;
+                left: 50vw;
+            }
+            
+            .cloud-3 {
+                left: 12.5vw;
+            }
+        }
+
         .sky::before {
             content: '';
             position: absolute;
@@ -210,6 +248,13 @@
             background: radial-gradient(circle, rgba(255,206,42,1) 0%, rgba(255,206,42,1) 50%, rgba(255,206,42,0) 75%);
             border-radius: 100vw;
             animation: fade 3s ease-out both;
+        }
+
+        @media screen and (max-width: 768px) {
+            .sky::before {
+                width: 25vw;
+                height: 25vw;
+            }
         }
 
         #play {
@@ -230,11 +275,11 @@
             animation: fade-scale 1s ease-out both;
         }
 
-        .actor, .sky::before, .sky::after, h1 {
+        .actor, .sky::before, .sky::after, h1 span {
             animation-play-state: paused;
         }
 
-        .active .actor, .active .sky::before, .active .sky::after, .active h1 {
+        .active .actor, .active .sky::before, .active .sky::after, .active h1 span {
             animation-play-state: running;
         }
 
