@@ -226,11 +226,11 @@
             opacity: 0;
         }
 
-        .actor, .sky::before, .sky::after {
+        .actor, .sky::before, .sky::after, h1 {
             animation-play-state: paused;
         }
 
-        .active .actor, .active .sky::before, .active .sky::after {
+        .active .actor, .active .sky::before, .active .sky::after, .active h1 {
             animation-play-state: running;
         }
 
@@ -300,10 +300,12 @@
         audio.play();
         scene.classList.add('active');
         let intervalId;
+        let repetitions = 0;
         const handler = () => {
+            repetitions++;
             scene.classList.remove('visible');
             audio.volume -= 0.1;
-            if (audio.volume <= 0) {
+            if (audio.volume <= 0 || repetitions === 15) {
                 clearInterval(intervalId);
                 audio.pause();
             }
