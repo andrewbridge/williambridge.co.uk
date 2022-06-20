@@ -226,16 +226,16 @@
             opacity: 0;
         }
 
+        h1 span {
+            animation: fade-scale 1s ease-out both;
+        }
+
         .actor, .sky::before, .sky::after, h1 {
             animation-play-state: paused;
         }
 
         .active .actor, .active .sky::before, .active .sky::after, .active h1 {
             animation-play-state: running;
-        }
-
-        h1 span {
-            animation: fade-scale 1s ease-out both;
         }
 
         h1 span:nth-child(1) {
