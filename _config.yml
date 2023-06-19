@@ -1,2 +1,5 @@
 exclude:
     - README.md
+    - package.json
+    - node_modules
+    - LICENSE

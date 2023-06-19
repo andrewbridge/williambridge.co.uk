@@ -1,0 +1,22 @@
+{
+  "name": "williambridge.co.uk",
+  "version": "5.0.0",
+  "description": "The contents of williambridge.co.uk",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewbridge/williambridge.co.uk.git"
+  },
+  "author": "Andrew Bridge <andrew@andrewhbridge.co.uk>",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/andrewbridge/williambridge.co.uk/issues"
+  },
+  "homepage": "https://github.com/andrewbridge/williambridge.co.uk#readme",
+  "dependencies": {
+    "three": "^0.153.0"
+  }
+}
