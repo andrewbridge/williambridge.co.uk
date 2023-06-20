@@ -2,8 +2,9 @@
   "name": "williambridge.co.uk",
   "version": "5.0.0",
   "description": "The contents of williambridge.co.uk",
-  "main": "index.html",
   "scripts": {
+    "start": "npx parcel src/index.html",
+    "build": "npx parcel build src/index.html --dist-dir .", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/andrewbridge/williambridge.co.uk#readme",
   "dependencies": {
-    "three": "^0.153.0"
+    "three": "^0.153.0",
+    "tween.js": "^16.6.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
   }
 }
