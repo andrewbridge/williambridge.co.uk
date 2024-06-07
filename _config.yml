@@ -1,6 +1,6 @@
 exclude:
     - README.md
-    - package.json
-    - node_modules
     - LICENSE
-    - src
+    - 2023/package.json
+    - 2023/node_modules
+    - 2023/src

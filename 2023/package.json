@@ -1,10 +1,10 @@
 {
   "name": "williambridge.co.uk",
-  "version": "6.0.0",
+  "version": "5.0.0",
   "description": "The contents of williambridge.co.uk",
   "scripts": {
-    "start": "npx five-server .",
-    "build": "echo \"Error: no build specified\" && exit 1", 
+    "start": "npx parcel src/index.html",
+    "build": "npx parcel build src/index.html --dist-dir .", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
