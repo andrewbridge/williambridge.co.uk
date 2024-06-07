@@ -4,7 +4,7 @@
   "description": "The contents of williambridge.co.uk",
   "scripts": {
     "start": "npx five-server .",
-    "build": "echo \"Error: no build specified\" && exit 1", 
+    "build": "echo \"Error: no build specified\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,12 +16,5 @@
   "bugs": {
     "url": "https://github.com/andrewbridge/williambridge.co.uk/issues"
   },
-  "homepage": "https://github.com/andrewbridge/williambridge.co.uk#readme",
-  "dependencies": {
-    "three": "^0.153.0",
-    "tween.js": "^16.6.0"
-  },
-  "devDependencies": {
-    "process": "^0.11.10"
-  }
+  "homepage": "https://github.com/andrewbridge/williambridge.co.uk#readme"
 }
