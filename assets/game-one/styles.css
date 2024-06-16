@@ -1,0 +1,160 @@
+#screen1 .game-area {
+    --item-box-width: 10%;
+    --item-box-position: 25vh;
+    --player-position: 50vh;
+    --player-height: 20vh;
+    /* If you set it to 20vh (which would make sense, you get a slither of the next frame */
+    --player-width: calc(var(--player-height) * .8);
+    --ground-position: calc(var(--player-position) + var(--player-height));
+    --ground-height: 50vh; /*calc(100vh - var(--ground-position));*/
+    --game-state: 0;
+}
+
+#screen1 .game-area.state-1 {
+    --game-state: 1;
+}
+
+#screen1 .game-area.state-2 {
+    --game-state: 2;
+}
+
+#screen1 .game-area.state-3 {
+    --game-state: 3;
+}
+
+#screen1 .game-area.state-4 {
+    --game-state: 5;
+}
+
+#screen1 .instructions {
+    transition: .25s transform ease-out;
+    background: rgb(174,229,238);
+    background: radial-gradient(circle, rgba(174,229,238,1) 0%, rgba(174,206,238,1) 100%); 
+}
+
+#screen1 .game-area:not(.state-4) .instructions .after {
+    display: none;
+}
+
+#screen1 .game-area.state-4 .instructions .before {
+    display: none;
+}
+
+
+#screen1 .state-1 .instructions,
+#screen1 .state-2 .instructions,
+#screen1 .state-3 .instructions {
+    transform: translateY(-100%);
+}
+
+#screen1 .state-4 .instructions {
+    transition-duration: 1.5s;
+    transition-delay: .5s;
+}
+
+#screen1 .item-box {
+    width: var(--item-box-width);
+    aspect-ratio: 5 / 4;
+    background: grey;
+    position: absolute;
+    top: var(--item-box-position);
+    z-index: 1;
+}
+
+@media (max-width: 499px) {
+    #screen1 .item-box {
+        transition: 1.5s margin-left linear;
+        left: calc(50% - (var(--item-box-width) / 2));
+    }
+
+    #screen1 .game-area:not([class*="state-"]) .item-box,
+    #screen1 .state-1 .item-box:first-child + .item-box,
+    #screen1 .state-1 .item-box:first-child + .item-box + .item-box,
+    #screen1 .state-2 .item-box:first-child + .item-box + .item-box {
+        margin-left: 75%;
+    }
+
+    #screen1 .state-2 .item-box:first-child,
+    #screen1 .state-3 .item-box:first-child,
+    #screen1 .state-4 .item-box:first-child,
+    #screen1 .state-3 .item-box:first-child + .item-box,
+    #screen1 .state-4 .item-box:first-child + .item-box,
+    #screen1 .state-4 .item-box:first-child + .item-box + .item-box {
+        margin-left: -75%;
+    }
+}
+
+@media (min-width: 500px)  {
+    #screen1 .item-box:first-child {
+        left: calc(25% - (var(--item-box-width) / 2));
+    }
+
+    #screen1 .item-box + .item-box {
+        left: calc(50% - (var(--item-box-width) / 2));
+    }
+
+    #screen1 .item-box + .item-box + .item-box {
+        left: calc(75% - (var(--item-box-width) / 2));
+    }
+}
+
+#screen1 .player {
+    --sprite-animation-steps: 6;
+    width: var(--player-width);
+    height: var(--player-height);
+    background-image: url('./player-sprite.png');
+    margin-top: var(--player-position);
+    transition: 1.5s margin-left linear;
+    
+}
+
+#screen1 .player.transitioning {
+    animation-play-state: running;
+}
+
+@media (max-width: 499px) {
+    #screen1 .player {
+        margin-left: calc(50% - (var(--player-width) / 2));
+    }
+}
+
+@media (min-width: 500px)  {
+    #screen1 .game-area[class*="state-"] .player {
+        margin-left: calc((25% * var(--game-state, 0)) - (var(--player-width) / 2));
+    }
+}
+
+#screen1 .player.jump {
+    background-position-x: calc((-100% / (var(--divider))) * 2);
+    animation: jump .4s 1;
+}
+
+@keyframes jump {
+    0% { transform: 0; animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1); }
+    69.0983% {
+        --jump-peak: calc((var(--item-box-position) * .8) * -1);
+        transform: translateY(var(--jump-peak));
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333);
+    }
+    100% { transform: 0;}
+}
+
+#screen1 .game-area::after {
+    content: '';
+    background-repeat: repeat-x, repeat-x, repeat;
+    background-color: #412134;
+    background-image: url('./grass.png'), url('./terrain-top.png'), url('./terrain-bottom.png');
+    width: 100%;
+    height: var(--ground-height);
+    display: block;
+    image-rendering: pixelated;
+    background-size: 10vh, 10vh, 19vh;
+}
+
+@media (max-width: 499px)  {
+    #screen1 .game-area::after {
+        transition: 1.5s background-position-x linear;
+        background-position-x: calc((-25% * var(--game-state, 0)));
+    }
+}
+
