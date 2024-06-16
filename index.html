@@ -82,7 +82,7 @@
 
         @keyframes play-sprite {
             100% {
-                background-position: calc((-100% / var(--divider)) * var(--sprite-animation-steps));
+                background-position: calc((100% / var(--divider)) * var(--sprite-animation-steps));
             }
         }
 
@@ -178,6 +178,6 @@
         <button class="next-button" onclick="scrollToNext('screen1')">Back to top</button>
     </div>
     <script type="module" src="./assets/index.js"></script>
-    <script type="module" src="./assets/game-one/script.js"></script>
+    <script type="module" src="./assets/game-one/script.mjs"></script>
 </body>
 </html>

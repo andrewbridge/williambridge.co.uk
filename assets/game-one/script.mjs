@@ -1,8 +1,45 @@
+import { setConfiguration } from "../configuration-collector.mjs";
+
 const screen = document.getElementById('screen1');
 const gameArea = screen.querySelector('.game-area');
 const instructions = screen.querySelector('.instructions');
 const player = screen.querySelector('.player');
 const itemBoxes = screen.querySelectorAll('.item-box');
+const animalsSprite = screen.querySelector('.animals.sprite');
+const biomesSprite = screen.querySelector('.biomes.sprite');
+const weatherSprite = screen.querySelector('.weather.sprite');
+
+const animals = [
+    'cat',
+    'snake',
+    'dinosaur',
+    'dog',
+    'budgie'
+];
+
+const biomes = [
+    'space',
+    'beach',
+    'city',
+    'mountains',
+    'spooky'
+];
+
+const weather = [
+    'wind',
+    'cloud',
+    'sun',
+    'night',
+    'rain'
+];
+
+const getSelection = (sprite) => {
+    const spriteSteps = parseInt(getComputedStyle(sprite).getPropertyValue('--sprite-animation-steps'), NaN);
+    const divider = spriteSteps - 1;
+    const sectionSize = 100 / divider;
+    const currentSection = parseFloat(getComputedStyle(sprite).getPropertyValue('background-position-x'));
+    return Math.round(currentSection / sectionSize);
+}
 
 const waitForPlayerJump = (itemBox) => {
     gameArea.addEventListener('click', () => {
@@ -35,16 +72,22 @@ instructions.addEventListener('click', async () => {
     player.classList.add('transitioning');
     await playerReady();
     await waitForPlayerJump(itemBoxes[0]);
+    const animalSelection = getSelection(animalsSprite);
+    setConfiguration('animal', animalSelection);
     gameArea.classList.toggle('state-1');
     gameArea.classList.toggle('state-2');
     player.classList.add('transitioning');
     await playerReady();
     await waitForPlayerJump(itemBoxes[1]);
+    const biomeSelection = getSelection(biomesSprite);
+    setConfiguration('biome', biomeSelection);
     gameArea.classList.toggle('state-2');
     gameArea.classList.toggle('state-3');
     player.classList.add('transitioning');
     await playerReady();
     await waitForPlayerJump(itemBoxes[2]);
+    const weatherSelection = getSelection(weatherSprite);
+    setConfiguration('weather', weatherSelection);
     gameArea.classList.toggle('state-3');
     gameArea.classList.toggle('state-4');
     player.classList.add('transitioning');
