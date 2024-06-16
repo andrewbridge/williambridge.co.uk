@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
     <link rel="stylesheet" href="./assets/game-one/styles.css">
+    <link rel="stylesheet" href="./assets/game-two/styles.css">
     <style>
         @keyframes fade {
             0% {
@@ -166,8 +167,13 @@
         </div>
     </div>
     <div class="screen" id="screen2">
-        Screen 2
-        <button class="next-button" onclick="scrollToNext('screen3')">Next</button>
+        <div class="game-area">
+            <div class="slot-frame sprite"></div>
+            <div class="instructions">
+                <p class="before">Pull the lever to get the best score</p>
+                <p class="after">Scroll down</p>
+            </div>
+        </div>
     </div>
     <div class="screen" id="screen3">
         Screen 3

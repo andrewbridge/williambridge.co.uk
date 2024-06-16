@@ -1,0 +1,21 @@
+#screen2 .instructions {
+    display: none;
+    transition: .25s transform ease-out;
+    background: rgb(174,229,238);
+    background: radial-gradient(circle, hsl(87, 65%, 81%) 0%, hsl(109, 65%, 81%) 100%); 
+}
+
+#screen2 .game-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#screen2 .slot-frame {
+    --sprite-animation-steps: 5;
+    width: 90vh;
+    height: calc((96 / 224) * 90vh);
+    /* height: var(--player-height); */
+    background-image: url('./slot-frame.png');
+    background-repeat: no-repeat;
+}
