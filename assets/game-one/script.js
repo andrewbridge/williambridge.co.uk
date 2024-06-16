@@ -4,8 +4,12 @@ const instructions = screen.querySelector('.instructions');
 const player = screen.querySelector('.player');
 const itemBoxes = screen.querySelectorAll('.item-box');
 
-const waitForPlayerJump = () => {
-    gameArea.addEventListener('click', () => player.classList.add('jump'), { once: true });
+const waitForPlayerJump = (itemBox) => {
+    gameArea.addEventListener('click', () => {
+        player.classList.add('jump');
+        // .4s * 69.0983% ~= 276, I've taken 50ms to account for some delay
+        setTimeout(() => itemBox.classList.add('hit'), 226);
+    }, { once: true });
     return new Promise((resolve) => {
         player.addEventListener('animationend', () => {
             player.classList.remove('jump');
@@ -30,17 +34,17 @@ instructions.addEventListener('click', async () => {
     gameArea.classList.toggle('state-1');
     player.classList.add('transitioning');
     await playerReady();
-    await waitForPlayerJump();
+    await waitForPlayerJump(itemBoxes[0]);
     gameArea.classList.toggle('state-1');
     gameArea.classList.toggle('state-2');
     player.classList.add('transitioning');
     await playerReady();
-    await waitForPlayerJump();
+    await waitForPlayerJump(itemBoxes[1]);
     gameArea.classList.toggle('state-2');
     gameArea.classList.toggle('state-3');
     player.classList.add('transitioning');
     await playerReady();
-    await waitForPlayerJump();
+    await waitForPlayerJump(itemBoxes[2]);
     gameArea.classList.toggle('state-3');
     gameArea.classList.toggle('state-4');
     player.classList.add('transitioning');

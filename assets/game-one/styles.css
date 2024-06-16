@@ -10,6 +10,12 @@
     --game-state: 0;
 }
 
+@media (max-width: 499px)  {
+    #screen1 .game-area {
+        --item-box-width: 25%;
+    }
+}
+
 #screen1 .game-area.state-1 {
     --game-state: 1;
 }
@@ -26,6 +32,21 @@
     --game-state: 5;
 }
 
+#screen1 .game-area {
+    background-image: url('./BG3.png'), url('./BG2.png'), url('./BG1.png');
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: left center;
+    image-rendering: pixelated;
+}
+
+@media (max-width: 499px)  {
+    #screen1 .game-area {
+        transition: 1.5s background-position-x linear;
+        background-position-x: calc((25% * var(--game-state, 0))), calc((15% * var(--game-state, 0))), 0;
+    }
+}
+
 #screen1 .instructions {
     transition: .25s transform ease-out;
     background: rgb(174,229,238);
@@ -40,7 +61,6 @@
     display: none;
 }
 
-
 #screen1 .state-1 .instructions,
 #screen1 .state-2 .instructions,
 #screen1 .state-3 .instructions {
@@ -54,11 +74,52 @@
 
 #screen1 .item-box {
     width: var(--item-box-width);
-    aspect-ratio: 5 / 4;
-    background: grey;
+    aspect-ratio: 1;
+    border: 1px solid white;
+    border-radius: .3em;
+    background: rgb(238, 135, 135);
     position: absolute;
     top: var(--item-box-position);
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#screen1 .item-box .sprite {
+    --sprite-animation-steps: 5;
+    --sprite-animation-speed: .75s;
+    animation-play-state: running;
+    border-radius: .3em;
+    background-color: rgb(251, 247, 223);
+    width: 80%;
+    aspect-ratio: 1;
+}
+
+@keyframes hit {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+#screen1 .item-box.hit {
+    animation: hit 0.25s ease-out;
+}
+
+#screen1 .item-box.hit .sprite {
+    animation-play-state: paused;
+}
+
+#screen1 .item-box .animals.sprite {
+    background-image: url('./animals.png');
+}
+
+#screen1 .item-box .biomes.sprite {
+    background-image: url('./biomes.png');
+}
+
+#screen1 .item-box .weather.sprite {
+    background-image: url('./weather.png');
 }
 
 @media (max-width: 499px) {

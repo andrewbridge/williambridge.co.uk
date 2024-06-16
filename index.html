@@ -76,7 +76,7 @@
             background-size: auto 100%;
             background-position: left center;
             --divider: calc(var(--sprite-animation-steps) - 1);
-            animation: play-sprite .5s steps(var(--sprite-animation-steps)) infinite;
+            animation: play-sprite var(--sprite-animation-speed, .5s) steps(var(--sprite-animation-steps)) infinite;
             animation-play-state: var(--sprite-animation-play-state, paused);
         }
 
@@ -149,9 +149,15 @@
     </div>
     <div class="screen" id="screen1">
         <div class="game-area">
-            <div class="item-box"></div>
-            <div class="item-box"></div>
-            <div class="item-box"></div>
+            <div class="item-box">
+                <div class="animals sprite"></div>
+            </div>
+            <div class="item-box">
+                <div class="biomes sprite"></div>
+            </div>
+            <div class="item-box">
+                <div class="weather sprite"></div>
+            </div>
             <div class="player sprite"></div>
             <div class="instructions">
                 <p class="before">Tap NotMario™ to jump and choose items!</p>
