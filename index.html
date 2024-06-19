@@ -204,10 +204,27 @@
         </div>
     </div>
     <div class="screen" id="screen4">
-        Screen 4
-        <button class="next-button" onclick="scrollToNext('screen1')">Back to top</button>
+        <div class="game-area">
+            <div class="instructions state-1">
+                <div class="state-1">
+                    <p>Let's get generating!</p>
+                    <button type="button" id="generate-button">Generate</button>
+                </div>
+                <div class="state-2">
+                    <p>The AI is doing all the work...</p>
+                    <img class="loading" src="./assets/loader.gif" />
+                </div>
+                <div class="state-3">
+                    <p>Uh oh...something went wrong!</p>
+                    <p>Let me know and <a href="./premade.html" target="_blank">check these out</a></p>
+                </div>
+            </div>
+            <img id="final_image" />
+            <p>Happy Birthday!</p>
+            <p><a href="./premade.html" target="_blank">Check out some I made earlier</a></p>
+        </div>
     </div>
-    <script type="module" src="./assets/index.js"></script>
+    <script type="module" src="./assets/index.mjs"></script>
     <script type="module" src="./assets/game-one/script.mjs"></script>
     <script type="module" src="./assets/game-two/script.mjs"></script>
     <script type="module" src="./assets/game-three/script.mjs"></script>

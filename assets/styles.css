@@ -1,0 +1,48 @@
+#screen4 .instructions {
+    transition: .5s transform ease-out;
+    background: hsl(270, 65%, 81%);
+    background: radial-gradient(circle, hsl(248, 65%, 81%) 0%, hsl(270, 65%, 81%) 100%);
+}
+
+#screen4 .instructions.hidden {
+    transform: translateY(-100%);
+}
+
+#screen4 .instructions [class*="state-"] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+#screen4 .instructions.state-1 .state-2,
+#screen4 .instructions.state-1 .state-3 {
+    display: none;
+}
+
+#screen4 .instructions.state-2 .state-1,
+#screen4 .instructions.state-2 .state-3 {
+    display: none;
+}
+
+#screen4 .instructions.state-3 .state-1,
+#screen4 .instructions.state-3 .state-2 {
+    display: none;
+}
+
+#screen4 .instructions .loading {
+    width: 30vh;
+    height: 30vh;
+}
+
+#screen4 .game-area {
+    overflow-y: auto;
+    text-align: center;
+}
+
+#screen4 #final_image {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: 0 auto;
+    display: block;
+}
