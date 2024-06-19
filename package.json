@@ -5,7 +5,8 @@
   "scripts": {
     "start": "npx five-server .",
     "build": "echo \"Error: no build specified\" && exit 1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:server-function": "deployctl deploy --project=williambridge-2024 --entrypoint=assets/server-functions/generate-card.js --include=assets"
   },
   "repository": {
     "type": "git",
