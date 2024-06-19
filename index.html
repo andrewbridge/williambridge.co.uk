@@ -7,10 +7,12 @@
     <title>🎂 Happy Birthday, William Bridge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Smooch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+    <link rel="stylesheet" href="./assets/styles.css">
     <link rel="stylesheet" href="./assets/game-one/styles.css">
     <link rel="stylesheet" href="./assets/game-two/styles.css">
+    <link rel="stylesheet" href="./assets/game-three/styles.css">
     <style>
         @keyframes fade {
             0% {
@@ -184,8 +186,22 @@
         </div>
     </div>
     <div class="screen" id="screen3">
-        Screen 3
-        <button class="next-button" onclick="scrollToNext('screen4')">Next</button>
+        <div class="game-area">
+            <div class="blowing-man"></div>
+            <div class="birthday-cake"></div>
+            <div class="numbers">
+                <p data-number="5">5</p>
+                <p data-number="4">4</p>
+                <p data-number="3">3</p>
+                <p data-number="2">2</p>
+                <p data-number="1">1</p>
+                <p data-number="GO!">GO!</p>
+            </div>
+            <div class="instructions">
+                <p class="before">Click as fast as you can to charge up BlowingMan™ to blow out all the candles</p>
+                <p class="after">Scroll down</p>
+            </div>
+        </div>
     </div>
     <div class="screen" id="screen4">
         Screen 4
@@ -194,5 +210,6 @@
     <script type="module" src="./assets/index.js"></script>
     <script type="module" src="./assets/game-one/script.mjs"></script>
     <script type="module" src="./assets/game-two/script.mjs"></script>
+    <script type="module" src="./assets/game-three/script.mjs"></script>
 </body>
 </html>
