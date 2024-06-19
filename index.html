@@ -168,10 +168,18 @@
     </div>
     <div class="screen" id="screen2">
         <div class="game-area">
+            <div class="scores">
+                <p>Best: <span class="best score"><span>0</span></span> Current: <span class="current score"><span>0</span></span></p>
+            </div>
             <div class="slot-frame sprite"></div>
+            <div class="carousels">
+                <div class="carousel"></div>
+                <div class="carousel"></div>
+                <div class="carousel"></div>
+            </div>
+            <p class="scroll-prompt">Scroll to keep your score!</p>
             <div class="instructions">
-                <p class="before">Pull the lever to get the best score</p>
-                <p class="after">Scroll down</p>
+                <p>Pull the lever to get the best score</p>
             </div>
         </div>
     </div>
@@ -185,5 +193,6 @@
     </div>
     <script type="module" src="./assets/index.js"></script>
     <script type="module" src="./assets/game-one/script.mjs"></script>
+    <script type="module" src="./assets/game-two/script.mjs"></script>
 </body>
 </html>

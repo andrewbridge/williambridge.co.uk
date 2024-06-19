@@ -166,7 +166,6 @@
     background-image: url('./player-sprite.png');
     margin-top: var(--player-position);
     transition: 1.5s margin-left linear;
-    
 }
 
 #screen1 .player.transitioning {

@@ -9,30 +9,6 @@ const animalsSprite = screen.querySelector('.animals.sprite');
 const biomesSprite = screen.querySelector('.biomes.sprite');
 const weatherSprite = screen.querySelector('.weather.sprite');
 
-const animals = [
-    'cat',
-    'snake',
-    'dinosaur',
-    'dog',
-    'budgie'
-];
-
-const biomes = [
-    'space',
-    'beach',
-    'city',
-    'mountains',
-    'spooky'
-];
-
-const weather = [
-    'wind',
-    'cloud',
-    'sun',
-    'night',
-    'rain'
-];
-
 const getSelection = (sprite) => {
     const spriteSteps = parseInt(getComputedStyle(sprite).getPropertyValue('--sprite-animation-steps'), NaN);
     const divider = spriteSteps - 1;
