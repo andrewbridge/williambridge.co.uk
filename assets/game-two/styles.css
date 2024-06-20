@@ -1,0 +1,245 @@
+#screen2 .game-area {
+    --slot-width: min(720px, 90vw);
+    --slot-height: calc((96 / 224) * var(--slot-width));
+    --slot-left: calc(50% - (var(--slot-width) / 2));
+    --carousels-left: calc((15 / 224) * var(--slot-width));
+    --carousels-top: calc((18 / 96) * var(--slot-height));
+    --carousel-width: calc((54 / 224) * var(--slot-width));
+    --carousel-aspect-ratio: 54 / 63;
+}
+
+#screen2 .game-area {
+    background-image: linear-gradient(0deg, rgba(34,158,69,1) 0%, rgba(14,68,29,1) 100%);
+}
+
+@keyframes pan-left {
+    0% { background-position: 0% 0%; }
+    100% { background-position: -100% 100%; }
+}
+
+#screen2 .game-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    opacity: 0.25;
+    background-image: url('./card-pattern.png');
+    animation: pan-left 120s linear infinite;
+    transform: rotate(25deg) translateX(-50%);
+}
+
+#screen2 .instructions {
+    transition: .5s transform ease-out;
+    background: rgb(174,229,238);
+    background: radial-gradient(circle, hsl(87, 65%, 81%) 0%, hsl(109, 65%, 81%) 100%);
+}
+
+#screen2 .playing .instructions {
+    transform: translateY(-100%);
+}
+
+@keyframes nudge {
+    6% { transform: translateY(-10%); }
+    12% { transform: translateY(10%); }
+    18% { transform: translateY(-10%); }
+    24% { transform: translateY(10%); }
+    30% { transform: translateY(-10%); }
+    36% { transform: translateY(10%); }
+    42% { transform: translateY(-10%); }
+    48% { transform: translateY(10%); }
+    54% { transform: translateY(-10%); }
+    60% { transform: translateY(10%); }
+    66% { transform: translateY(-10%); }
+    72% { transform: translateY(10%); }
+    93% { transform: scale(1); }
+    94% { transform: scale(.9); }
+    97% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#screen2 .scroll-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    position: absolute;
+    bottom: 3vh;
+    font-size: 21px;
+    font-family: "Press Start 2P";
+    text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white;
+    opacity: 0;
+    transition: 3s opacity ease-in-out;
+    animation: nudge 10s linear infinite;
+    width: 100%;
+}
+
+@media (max-width: 499px)  {
+    #screen2 .scroll-prompt {
+        width: 75%;
+    }
+}
+
+#screen2 .scroll-prompt.shown {
+    opacity: 1;
+}
+
+#screen2 .scroll-prompt::before,
+#screen2 .scroll-prompt::after {
+    content: '⇣';
+    display: block;
+    width: 10%;
+}
+
+#screen2 .scores {
+    position: absolute;
+    top: 1vh;
+    left: var(--slot-left);
+    background: black;
+    font-family: "VT323", monospace;
+    color: #00ff00;
+    font-size: 32px;
+    padding: 3px 9px;
+    border-radius: 5px;
+    letter-spacing: 5px;
+}
+
+#screen2 .scores .score {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    text-shadow: 0 0 10px #00ff00;
+    text-align: right;
+}
+
+#screen2 .scores .score span {
+    position: relative;
+    z-index: 1;
+    background: black;
+}
+
+#screen2 .score::before {
+    content: "0000";
+    position: absolute;
+    color: #004400;
+    right: 0;
+    text-shadow: none;
+}
+
+#screen2 .game-area, #screen2 .carousels {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#screen2 .slot-frame {
+    --sprite-animation-steps: 5;
+    width: var(--slot-width);
+    height: var(--slot-height);
+    background-image: url('./slot-frame.png');
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+#screen2 .slot-frame.pull-lever {
+    animation-play-state: running;
+    animation-iteration-count: 1;
+}
+
+#screen2 .carousels {
+    position: absolute;
+    top: calc(50% - (var(--slot-height) / 2) + var(--carousels-top));
+    left: calc(50% - (var(--slot-width) / 2) + var(--carousels-left));
+    gap: 5px;
+    background: white;
+}
+
+#screen2 .carousel {
+    width: var(--carousel-width);
+    aspect-ratio: var(--carousel-aspect-ratio);
+    background-image: url('./items.png');
+    image-rendering: pixelated;
+    background-repeat: repeat-y;
+    background-size: 60% auto;
+    background-position-x: center;
+    position: relative;
+}
+
+#screen2 .carousel::before,
+#screen2 .carousel::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 12.5%;
+}
+
+#screen2 .carousel::before {
+    top: 0;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+#screen2 .carousel::after {
+    bottom: 0;
+    background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+@keyframes spin {
+    100% { background-position-y: 100%; }
+}
+
+#screen2 .carousel.spin {
+    animation: spin 1s linear infinite;
+}
+@keyframes finish-spin {
+    0% { background-position-y: calc(var(--carousel-finish-position) - 4%); }
+    100% { background-position-y: var(--carousel-finish-position); }
+}
+
+#screen2 .carousel.finish {
+    animation: finish-spin .2s ease-out both;
+}
+
+#screen2 .carousel.gold-coin {
+    --carousel-finish-position: 0%;
+}
+
+#screen2 .carousel.blue-potion {
+    --carousel-finish-position: 10%;
+}
+
+#screen2 .carousel.ruby {
+    --carousel-finish-position: 20%;
+}
+
+#screen2 .carousel.diamond {
+    --carousel-finish-position: 30%;
+}
+
+#screen2 .carousel.bronze-coin {
+    --carousel-finish-position: 40%;
+}
+
+#screen2 .carousel.emerald {
+    --carousel-finish-position: 50%;
+}
+
+#screen2 .carousel.amethyst {
+    --carousel-finish-position: 60%;
+}
+
+#screen2 .carousel.silver-coin {
+    --carousel-finish-position: 70%;
+}
+
+#screen2 .carousel.purple-potion {
+    --carousel-finish-position: 80%;
+}
+
+#screen2 .carousel.sapphire {
+    --carousel-finish-position: 90%;
+}
+
+#screen2 .carousel.red-potion {
+    --carousel-finish-position: 99.7%;
+}

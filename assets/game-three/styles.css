@@ -1,0 +1,184 @@
+#screen3 .game-area {
+    position: relative;
+    background-image: radial-gradient(circle, #faf3e0, #efe7d6, #e0d8c0, #d1cab0);
+}
+
+#screen3 .numbers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#screen3 .numbers p {
+    position: absolute;
+    font-size: 20vh;
+    top: calc(50% - 10vh);
+    text-align: center;
+    width: 100%;
+    font-family: "Smooch", serif;
+    opacity: 0;
+}
+
+@keyframes show-number {
+    0% { opacity: 0; transform: scale(1); }
+    12.5% { opacity: 1; }
+    87.5% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+#screen3 .state-1 .numbers p {
+    animation: show-number 1s both;
+}
+
+#screen3 .state-1 .numbers [data-number="2"] {
+    animation-delay: 1s;
+}
+
+#screen3 .state-1 .numbers [data-number="1"] {
+    animation-delay: 2s;
+}
+
+#screen3 .state-1 .numbers [data-number="GO!"] {
+    animation-delay: 3s;
+}
+
+#screen3 .instructions {
+    transition: .5s transform ease-out;
+    background: hsl(18, 65%, 81%);
+    background: radial-gradient(circle, hsl(18, 65%, 81%) 0%, hsl(40, 65%, 81%) 100%); 
+}
+
+#screen3 .instructions.hidden {
+    transform: translateY(-100%);
+}
+
+#screen3 .game-area:not(.state-7) .instructions .after {
+    display: none;
+}
+
+#screen3 .game-area.state-7 .instructions .before {
+    display: none;
+}
+
+#screen3 .blowing-man {
+    --sprite-animation-steps: 13;
+    --divider: calc(var(--sprite-animation-steps) - 1);
+    --frame-size: calc(100% / var(--divider));
+    /* width: var(--slot-width); */
+    height: 50vh;
+    width: 50vh;
+    background-image: url('./blowing-man.png');
+    image-rendering: pixelated;
+    background-size: auto 100%;
+    background-position: left center;
+    animation: var(--sprite-animation-speed, .5s) steps(3) both infinite;
+    transition: 1.5s transform ease-in-out;
+}
+
+@media (min-width: 600px)  {
+    #screen3 .blowing-man {
+        height: 75vh;
+        width: 75vh;
+    }
+}
+
+@keyframes level-one-inhaling {
+    0% { background-position-x: 0%; }
+    50% { background-position-x: calc(var(--frame-size) * 3); }
+    100% { background-position-x: 0%; }
+}
+
+#screen3 .state-2 .blowing-man {
+    animation-name: level-one-inhaling;
+}
+
+@keyframes level-two-inhaling {
+    0% { background-position-x: calc(var(--frame-size) * 3); }
+    50% { background-position-x: calc(var(--frame-size) * 6); }
+    100% { background-position-x: calc(var(--frame-size) * 3); }
+}
+
+#screen3 .state-3 .blowing-man {
+    animation-name: level-two-inhaling;
+}
+
+@keyframes level-three-inhaling {
+    0% { background-position-x: calc(var(--frame-size) * 6); }
+    50% { background-position-x: calc(var(--frame-size) * 9); }
+    100% { background-position-x: calc(var(--frame-size) * 6); }
+}
+
+#screen3 .state-4 .blowing-man {
+    animation-name: level-three-inhaling;
+}
+
+@keyframes exhale {
+    0% { background-position-x: calc(var(--frame-size) * 9); }
+    100% { background-position-x: calc(var(--frame-size) * 12); }
+}
+
+#screen3 .state-5 .blowing-man {
+    --sprite-animation-speed: 1.5s;
+    animation-name: exhale;
+    animation-iteration-count: 1;
+}
+
+#screen3 .state-6 .blowing-man,
+#screen3 .state-7 .blowing-man {
+    transform: translateX(-100%);
+}
+
+#screen3 .birthday-cake {
+    --sprite-animation-steps: 11;
+    --divider: calc(var(--sprite-animation-steps) - 1);
+    --frame-size: calc(100% / var(--divider));
+    --sprite-animation-speed: 10s;
+    --cake-size: 50vh;
+    --cake-position: 28vh;
+    /* width: var(--slot-width); */
+    height: var(--cake-size);
+    width: var(--cake-size);
+    background-image: url('./birthday-cake.png');
+    image-rendering: pixelated;
+    background-size: auto 100%;
+    background-position: left center;
+    animation: blow-candles var(--sprite-animation-speed, .5s) steps(var(--divider)) both paused 1;
+    position: absolute;
+    top: 0;
+    left: var(--cake-position);
+    transition: 1.5s opacity ease-in-out;
+}
+
+@keyframes blow-candles {
+    100% {
+        background-position: calc((100% / var(--divider)) * var(--divider));
+    }
+}
+
+@media (min-width: 600px)  {
+    #screen3 .birthday-cake {
+        --cake-size: 75vh;
+        --cake-position: 48vh;
+    }
+}
+
+#screen3 .state-6 .birthday-cake {
+    opacity: 0;
+}
+
+#screen3 .state-7 .birthday-cake {
+    left: calc(50% - (var(--cake-size) / 2));
+    transition-duration: 0.25s;
+    animation-play-state: running;
+}
+
+/* .sprite {
+    image-rendering: pixelated;
+    background-size: auto 100%;
+    background-position: left center;
+    --divider: calc(var(--sprite-animation-steps) - 1);
+    animation: play-sprite var(--sprite-animation-speed, .5s) steps(var(--sprite-animation-steps)) infinite;
+    animation-play-state: var(--sprite-animation-play-state, paused);
+} */

@@ -1,0 +1,12 @@
+{
+  "deploy": {
+    "project": "0b8ed4a8-8f78-413c-95d6-3d083e4f217e",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [
+      "assets"
+    ],
+    "entrypoint": "assets/server-functions/generate-card.js"
+  }
+}

@@ -1,11 +1,12 @@
 {
   "name": "williambridge.co.uk",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "The contents of williambridge.co.uk",
   "scripts": {
-    "start": "npx parcel src/index.html",
-    "build": "npx parcel build src/index.html --dist-dir .", 
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx five-server .",
+    "build": "echo \"Error: no build specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:server-function": "deployctl deploy --project=williambridge-2024 --entrypoint=assets/server-functions/generate-card.js --include=assets"
   },
   "repository": {
     "type": "git",
@@ -16,12 +17,5 @@
   "bugs": {
     "url": "https://github.com/andrewbridge/williambridge.co.uk/issues"
   },
-  "homepage": "https://github.com/andrewbridge/williambridge.co.uk#readme",
-  "dependencies": {
-    "three": "^0.153.0",
-    "tween.js": "^16.6.0"
-  },
-  "devDependencies": {
-    "process": "^0.11.10"
-  }
+  "homepage": "https://github.com/andrewbridge/williambridge.co.uk#readme"
 }
