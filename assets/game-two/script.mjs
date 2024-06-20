@@ -120,11 +120,13 @@ const pullHandler = async () => {
     leverAudio.play();
     currentScoreValue.value = 0;
     var hiddenCurrentScore = 0;
+    var selection = [];
     carousels.forEach((carousel, index) => {
         carousel.classList.remove(...allSymbols);
         carousel.classList.remove('finish');
         carousel.classList.add('spin');
         const { symbol, score } = selectSymbol();
+        selection.push(symbol);
         hiddenCurrentScore += score;
         carousel.classList.add(symbol);
         const carouselFinished = awaiter.getAwaiter();
@@ -136,6 +138,9 @@ const pullHandler = async () => {
         }, 2000 + (500 * index));
     });
     await awaiter.awaitAll();
+    if (selection.every((symbol) => symbol === selection[0])) {
+        hiddenCurrentScore = Math.round(Math.min(hiddenCurrentScore * 1.25, 9999));
+    }
     currentScoreValue.value = hiddenCurrentScore;
     setConfiguration('slot machine score', String(hiddenCurrentScore).padStart(4, '0'));
     if (hiddenCurrentScore > bestScoreValue.value) {
