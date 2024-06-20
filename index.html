@@ -100,7 +100,6 @@
         .game-area .instructions {
             width: 100%;
             height: 100%;
-            padding: 2.5%;
             position: absolute;
             top: 0;
             left: 0;
@@ -110,6 +109,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media (max-width: 499px)  {
+            .game-area .instructions {
+                font-size: 24px;
+                padding: 10%;
+            }
+        }
+
+        @media (min-width: 500px)  {
+            .game-area .instructions {
+                padding: 2.5%;
+            }
         }
 
         .game-area .instructions::before {
@@ -131,14 +143,18 @@
             0% { background-position: 0% 0%; }
             100% { background-position: 100% 100%; }
         }
+
+        audio {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="message">
         <h1>Dear William,</h1>
         <p>Happy Birthday 🎂!</p>
-        <p>TODO!</p>
-        <p>TODO!</p>
+        <p>Hope you have a great day, and can set up a nice little home studio for yourself!</p>
+        <p>I'm getting old and weary and, as we all know, AI is coming to get us. So I put my feet up and let the AI do all the work for me this year. Enjoy!</p>
         <p class="middle">Andrew&nbsp;<img class="circle" height="25px" src="https://secure.gravatar.com/avatar/4e40467570b0bd1bd73408b343549f04?size=35" /></p>
         <nav>
             <ul>
@@ -190,8 +206,6 @@
             <div class="blowing-man"></div>
             <div class="birthday-cake"></div>
             <div class="numbers">
-                <p data-number="5">5</p>
-                <p data-number="4">4</p>
                 <p data-number="3">3</p>
                 <p data-number="2">2</p>
                 <p data-number="1">1</p>

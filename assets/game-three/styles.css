@@ -32,24 +32,16 @@
     animation: show-number 1s both;
 }
 
-#screen3 .state-1 .numbers [data-number="4"] {
+#screen3 .state-1 .numbers [data-number="2"] {
     animation-delay: 1s;
 }
 
-#screen3 .state-1 .numbers [data-number="3"] {
+#screen3 .state-1 .numbers [data-number="1"] {
     animation-delay: 2s;
 }
 
-#screen3 .state-1 .numbers [data-number="2"] {
-    animation-delay: 3s;
-}
-
-#screen3 .state-1 .numbers [data-number="1"] {
-    animation-delay: 4s;
-}
-
 #screen3 .state-1 .numbers [data-number="GO!"] {
-    animation-delay: 5s;
+    animation-delay: 3s;
 }
 
 #screen3 .instructions {
