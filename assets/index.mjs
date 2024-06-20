@@ -9,7 +9,7 @@ generateButton.addEventListener('click', async () => {
     instructions.classList.toggle('state-1');
     instructions.classList.toggle('state-2');
     try {
-        const response = await fetch('https://williambridge-2024-0mfewpaqrk37.deno.dev', { method: 'POST', body: getConfiguration() });
+        const response = await fetch('https://williambridge-2024-zgsngq9zxkda.deno.dev', { method: 'POST', body: getConfiguration() });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

@@ -8,7 +8,7 @@ const openai = new OpenAI({
 
 serve(async (req) => {
     const headers = new Headers();
-    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Access-Control-Allow-Origin", "https://williambridge.co.uk");
     headers.set("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
     headers.set("Access-Control-Allow-Headers", "Content-Type");
     
