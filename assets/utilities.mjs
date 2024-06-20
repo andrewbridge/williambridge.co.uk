@@ -34,3 +34,15 @@ export const wait = (time) => new Promise(resolve => setTimeout(resolve, time));
 
 export const waitForEvent = (element, event) =>
     new Promise(resolve => element.addEventListener(event, resolve, { once: true }));
+
+export function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func.apply(this, args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}

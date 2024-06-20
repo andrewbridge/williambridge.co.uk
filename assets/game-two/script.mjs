@@ -1,6 +1,8 @@
 import { setConfiguration } from "../configuration-collector.mjs";
-import { AsyncWaiter, createReactive } from "../utilities.mjs";
+import { AsyncWaiter, createReactive, debounce } from "../utilities.mjs";
 
+const bgmCheckbox = document.getElementById('bgm-check');
+const sfxCheckbox = document.getElementById('sfx-check');
 const screen = document.getElementById('screen2');
 const gameArea = screen.querySelector('.game-area');
 const instructions = screen.querySelector('.instructions');
@@ -9,8 +11,52 @@ const currentScore = screen.querySelector('.current.score span');
 const slots = screen.querySelector('.slot-frame');
 const carousels = screen.querySelectorAll('.carousel');
 const scrollPrompt = screen.querySelector('.scroll-prompt');
+const bgmAudio = screen.querySelector('audio.bgm');
+const leverAudio = screen.querySelector('audio.lever');
+const slotAudios = [
+    screen.querySelector('audio.slot_1'),
+    screen.querySelector('audio.slot_2'),
+    screen.querySelector('audio.slot_3'),
+];
+
+bgmCheckbox.addEventListener('change', () => {
+    bgmAudio.muted = !bgmCheckbox.checked;
+});
+sfxCheckbox.addEventListener('change', () => {
+    leverAudio.muted = !sfxCheckbox.checked;
+    slotAudios.forEach(audio => audio.muted = !sfxCheckbox.checked);
+});
+
+function isCenterScrolledIntoView(elem) {
+    const rect = elem.getBoundingClientRect();
+    const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    const elemCenterX = rect.left + rect.width / 2;
+    const elemCenterY = rect.top + rect.height / 2;
+
+    const horizontallyInView = elemCenterX >= 0 && elemCenterX <= viewWidth;
+    const verticallyInView = elemCenterY >= 0 && elemCenterY <= viewHeight;
+
+    return horizontallyInView && verticallyInView;
+}
+
+// Debounced scroll event handler
+const debouncedOnScroll = debounce(() => {
+    if (gameArea.classList.contains('playing') && isCenterScrolledIntoView(screen)) {
+        console.log('playing');
+        bgmAudio.play();
+    } else {
+        console.log('pausing');
+        bgmAudio.pause();
+    }
+}, 100);
+
+// Attach the debounced scroll event handler to the window scroll event
+window.addEventListener('scroll', debouncedOnScroll, false);
 
 instructions.addEventListener('click', () => {
+    bgmAudio.play();
     gameArea.classList.add('playing');
 }, { once: true });
 
@@ -64,7 +110,14 @@ const pullHandler = async () => {
         slots.classList.remove('pull-lever');
         leverPulled();
     }, { once: true });
+    leverAudio.pause();
+    leverAudio.currentTime = 0;
+    slotAudios.forEach((slotAudio) => {
+        slotAudio.pause();
+        slotAudio.currentTime = 0
+    });
     slots.classList.add('pull-lever');
+    leverAudio.play();
     currentScoreValue.value = 0;
     var hiddenCurrentScore = 0;
     carousels.forEach((carousel, index) => {
@@ -77,7 +130,8 @@ const pullHandler = async () => {
         const carouselFinished = awaiter.getAwaiter();
         setTimeout(() => {
             carousel.classList.remove('spin');
-            carousel.classList.add('finish')
+            carousel.classList.add('finish');
+            slotAudios[index].play();
             carouselFinished();
         }, 2000 + (500 * index));
     });

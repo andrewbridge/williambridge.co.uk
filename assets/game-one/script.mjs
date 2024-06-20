@@ -1,5 +1,7 @@
 import { setConfiguration } from "../configuration-collector.mjs";
 
+const bgmCheckbox = document.getElementById('bgm-check');
+const sfxCheckbox = document.getElementById('sfx-check');
 const screen = document.getElementById('screen1');
 const gameArea = screen.querySelector('.game-area');
 const instructions = screen.querySelector('.instructions');
@@ -8,6 +10,15 @@ const itemBoxes = screen.querySelectorAll('.item-box');
 const animalsSprite = screen.querySelector('.animals.sprite');
 const biomesSprite = screen.querySelector('.biomes.sprite');
 const weatherSprite = screen.querySelector('.weather.sprite');
+const bgmAudio = screen.querySelector('audio.bgm');
+const sfxAudio = screen.querySelector('audio.sfx');
+
+bgmCheckbox.addEventListener('change', () => {
+    bgmAudio.muted = !bgmCheckbox.checked;
+});
+sfxCheckbox.addEventListener('change', () => {
+    sfxAudio.muted = !sfxCheckbox.checked;
+});
 
 const getSelection = (sprite) => {
     const spriteSteps = parseInt(getComputedStyle(sprite).getPropertyValue('--sprite-animation-steps'), NaN);
@@ -21,7 +32,11 @@ const waitForPlayerJump = (itemBox) => {
     gameArea.addEventListener('click', () => {
         player.classList.add('jump');
         // .4s * 69.0983% ~= 276, I've taken 50ms to account for some delay
-        setTimeout(() => itemBox.classList.add('hit'), 226);
+        sfxAudio.currentTime = 0;
+        setTimeout(() => {
+            itemBox.classList.add('hit');
+            sfxAudio.play();
+        }, 226);
     }, { once: true });
     return new Promise((resolve) => {
         player.addEventListener('animationend', () => {
@@ -44,6 +59,7 @@ instructions.addEventListener('click', async () => {
     };
     player.addEventListener('transitionend', transitionHandler);
     itemBoxes.forEach((box) => box.addEventListener('transitionend', transitionHandler));
+    bgmAudio.play();
     gameArea.classList.toggle('state-1');
     player.classList.add('transitioning');
     await playerReady();
@@ -67,4 +83,6 @@ instructions.addEventListener('click', async () => {
     gameArea.classList.toggle('state-3');
     gameArea.classList.toggle('state-4');
     player.classList.add('transitioning');
+    await playerReady();
+    bgmAudio.pause();
 }, { once: true })
